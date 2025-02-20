@@ -2,7 +2,7 @@
     :global(body) {
       margin: 0;
       padding: 0;
-      font-family: 'IBM Plex Mono', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: white;
     }
   
@@ -19,7 +19,7 @@
       margin: 0;
       padding: 0;
       line-height: 0.7;
-      letter-spacing: -0.00em;
+      letter-spacing: -0.03em;
       margin-left: -0.055em; 
     }
   
@@ -95,16 +95,17 @@
   
   <div class="container">
     <div class="header">
-      <h1>¬0</h1>
-      <p class="subtitle">Blog</p>
+        <h1>¬ 0</h1>
+        <p class="subtitle">Blog</p>
     </div>
     
     <div class="content">
-      <p class="main-text">Posts</p>
-      <p class="main-text"><a href="/crossingPaths">Crossing paths, will it happen?</a></p>
+      <p class="main-text">Hello, I am Mithil. I like math, programming, and design.</p>
+      <p class="main-text">Socials/links placeholder</p>
+      
     </div>
   
     <div class="footer">
-        <a href="/about">About</a>
+      <a href="/">Home</a>
     </div>
   </div>
