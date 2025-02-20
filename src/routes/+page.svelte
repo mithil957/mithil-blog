@@ -1,110 +1,132 @@
-<style>
-    :global(body) {
-      margin: 0;
-      padding: 0;
-      font-family: 'IBM Plex Mono', sans-serif;
-      background-color: white;
-    }
-  
-    .header {
-      background-color: black;
-      color: white;
-      padding: 2rem;
-      padding-bottom: 1rem;
-    }
-  
-    h1 {
-      font-size: 6.0rem;
-      font-weight: 600;
-      margin: 0;
-      padding: 0;
-      line-height: 0.7;
-      letter-spacing: -0.00em;
-      margin-left: -0.055em; 
-    }
-  
-    .subtitle {
-      font-size: 1.7rem;
-      margin: 0;
-      padding: 0;
-      margin-top: 0.25rem;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-  
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .content {
-      flex-grow: 1;
-      padding: 2rem;
-      padding-top: 1.5rem;
-    }
-  
-    .main-text {
-      font-size: 1.65rem;
-      margin: 0;
-      padding: 0;
-      line-height: 1.4;
-      letter-spacing: -0.03em;
-    }
-  
-    .footer {
-      background-color: black;
-      color: white;
-      padding: 2rem;
-      padding-left: 1.75rem;
-    }
-  
-    .footer a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      line-height: 1.5;
-      letter-spacing: -0.01em;
-    }
-  
-    .footer a:hover {
-      text-decoration: underline;
-    }
+<!-- routes/+page.svelte -->
+<div class="blog">
+  <div class="content">
+    <header class="blog-header">
+      <div class="header-content">
+        <h1 class="blog-title">¬0</h1>
+        <a href="/about" class="about-link">About</a>
+      </div>
+      <div class="divider"></div>
+    </header>
 
-    .store-link {
-      margin-top: 2rem;
-    }
-
-    .store-link a {
-      display: inline-block;
-      color: black;
-      text-decoration: none;
-      border: 2px solid black;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      letter-spacing: -0.02em;
-      transition: background-color 0.2s;
-    }
-
-    .store-link a:hover {
-      background-color: black;
-      color: white;
-    }
-  </style>
-  
-  <div class="container">
-    <div class="header">
-      <h1>¬0</h1>
-      <p class="subtitle">Blog</p>
-    </div>
-    
-    <div class="content">
-      <p class="main-text">Posts</p>
-      <p class="main-text"><a href="/crossingPaths">Crossing paths, will it happen?</a></p>
-    </div>
-  
-    <div class="footer">
-        <a href="/about">About</a>
-    </div>
+    <main class="post-content">
+      <h2 class="section-title">Recent Posts</h2>
+      
+      <div class="post-list">
+        <article class="post-item">
+          <a href="/crossingPaths" class="post-link">
+            <h3 class="post-name">Crossing paths, will it happen?</h3>
+            <time class="post-date">Feb 20, 2025 | 12:00 PM</time>
+          </a>
+        </article>
+      </div>
+    </main>
   </div>
+</div>
+
+<style>
+  .blog {
+    min-height: 100vh;
+    background-color: #1a1a1a;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .blog-header {
+    margin-bottom: 2rem;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .blog-title {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 4rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .about-link {
+    font-family: "Poppins", sans-serif;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+  }
+
+  .about-link:hover {
+    color: #ff7f50;
+  }
+
+  .divider {
+    height: 2px;
+    background-color: #ff7f50;
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  .section-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 2rem 0 1.5rem 0;
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .post-item {
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+  }
+
+  .post-item:hover {
+    transform: translateX(8px);
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-name {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #e0e0e0;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .post-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.9rem;
+    color: #b3b3b3;
+  }
+
+  @media (max-width: 768px) {
+    .content {
+      padding: 1rem;
+    }
+
+    .blog-title {
+      font-size: 3rem;
+    }
+
+    .post-name {
+      font-size: 1.1rem;
+    }
+  }
+</style>
