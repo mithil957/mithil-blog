@@ -41,6 +41,9 @@
 
 <div class="sketch-container">
     <div class="canvas-container" bind:this={container}></div>
+    <div class="caption">
+        Top grid is P and the bottom grid is LP. Hover over the bottom grid to see the corresponding line pair.
+    </div>
     <div class="controls">
         <div class="control-group">
             <button on:click={handleDecrease}>Grid Size -</button>
@@ -62,7 +65,7 @@
         width: 400px;
         height: 800px;
         display: flex;
-        align-items: flex-start; /* Changed to align top */
+        align-items: flex-start;
         justify-content: center;
         background: #000;
     }
@@ -92,6 +95,15 @@
 
     button:hover {
         opacity: 0.9;
+    }
+
+    .caption {
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        color: #b3b3b3;
+        text-align: center;
+        max-width: 400px;
+        line-height: 1.5;
     }
 
     /* Media query for smaller screens */

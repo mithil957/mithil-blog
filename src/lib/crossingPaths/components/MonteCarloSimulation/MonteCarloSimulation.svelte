@@ -78,19 +78,19 @@
     
     <div class="stats-container">
         <div class="stat-group">
-            <span class="stat-label">Grid Size:</span>
+            <span class="stat-label">Grid Size</span>
             <span class="stat-value">{gridSize} × {gridSize}</span>
         </div>
         <div class="stat-group">
-            <span class="stat-label">Total Samples:</span>
+            <span class="stat-label">Total Samples</span>
             <span class="stat-value">{stats.totalSamples}</span>
         </div>
         <div class="stat-group">
-            <span class="stat-label">Intersecting Pairs:</span>
+            <span class="stat-label">Intersecting Pairs</span>
             <span class="stat-value">{stats.intersectingPairs}</span>
         </div>
         <div class="stat-group">
-            <span class="stat-label">Probability:</span>
+            <span class="stat-label">Probability</span>
             <span class="stat-value">{probability}%</span>
         </div>
     </div>
@@ -143,13 +143,13 @@
 
     .stat-label {
         font-size: 0.9rem;
-        color: #666;
+        color: #b3b3b3;
     }
 
     .stat-value {
         font-size: 1.2rem;
         font-weight: 500;
-        color: #000;
+        color: #fff;
     }
 
     .controls {

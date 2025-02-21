@@ -95,7 +95,7 @@
     .instruction-text {
         font-family: "Poppins", sans-serif;
         font-size: 1rem;
-        color: #666;
+        color: #b3b3b3;
         text-align: center;
     }
 

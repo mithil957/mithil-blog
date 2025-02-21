@@ -19,7 +19,7 @@ export const createPolygonMethodSketch = () => {
   const COLORS = {
     background: "#000000",
     grid: "#333333",
-    lineSegment: "#FF7F50",
+    lineSegment: "#50ff7f",
     clockwisePolygon: "rgba(255, 127, 80, 0.4)",
     counterClockwisePolygon: "rgba(65, 105, 225, 0.4)",
     points: "#ffffff",
@@ -294,7 +294,7 @@ export const createPolygonMethodSketch = () => {
       p.noStroke();
       for (const point of intersectingPoints) {
         const canvasPoint = gridToCanvas(point);
-        p.circle(canvasPoint.x, canvasPoint.y, 4);
+        p.circle(canvasPoint.x, canvasPoint.y, 6);
       }
     };
 

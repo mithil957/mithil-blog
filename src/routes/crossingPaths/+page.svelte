@@ -5,6 +5,7 @@
   import MonteCarloIllustration from "$lib/crossingPaths/components/MonteCarloIllustration/MonteCarloPicture.svelte";
   import MonteCarloSimulation from "$lib/crossingPaths/components/MonteCarloSimulation/MonteCarloSimulation.svelte";
   import PolygonMethod from "$lib/crossingPaths/components/PolygonMethod/PolygonMethod.svelte";
+  import Math from "$lib/Math.svelte";
 </script>
 
 <div class="blog-post">
@@ -16,22 +17,28 @@
     </header>
 
     <article class="post-content">
-      <h2 class="post-title">Crossing paths, will it happen?</h2>
-      <br>
+      <h2 class="post-title">Crossing paths</h2>
+      <br />
       <!-- Introduction -->
       <p class="section-text">
         When did you last cross paths with an old friend? With someone
-        unexpected? How did you feel? Maybe you said it's a small world and
-        laughed. Or, remembered the first time you met and shake your head. How
-        could it have ever happened? Is it really impossible?
+        unexpected? Something about it feels impossible, you say it's a small
+        world and catch up. How could it have ever happened? Is it really?
       </p>
 
       <!-- Simple Crossing -->
-      <h2 class="section-title">Simple crossing</h2>
+      <h2 class="section-title">Simple world</h2>
       <p class="section-text">
-        We have two people U (you) and SU (someone unexpected). Each starting
-        somewhere and following a path until it ends. It's a small world, so
-        let's start with a 3 by 3 grid with 2 paths.
+        We will have a simple model. The world will be a
+        square of size <Math math="N \times N" />. We have two people <Math
+          math="\mathcal<U>"
+        /> (you) and <Math math="\mathcal<SU>" /> (someone unexpected). Each starting
+        somewhere and following a path until it ends. The start and end points will
+        be lattice points (integer coordinates). For example, <Math
+          math="(2,4)"
+        /> is a lattice point but <Math math="(6.8, 4)" /> is not. What will happen
+        to the probability of intersection as <Math math="N" /> (the world) gets
+        bigger?
       </p>
 
       <div class="interactive-element">
@@ -39,9 +46,95 @@
       </div>
 
       <p class="section-text">
-        It looks like as the world gets bigger, U won't cross paths with SU.
-        What happens as the grid size gets bigger?
+        Let's start with understanding the space of possibilities.
       </p>
+
+      <div class="section-text math-blocks">
+        <div class="math-block">
+          <h3>Number of Points</h3>
+          <p>Let's start by counting the points on different sized grids</p>
+          <ul>
+            <li>
+              <Math math="4" /> points on a <Math math="1 \times 1" /> grid
+            </li>
+            <li>
+              <Math math="9" /> points on a <Math math="2 \times 2" /> grid
+            </li>
+            <li>
+              <Math math="16" /> points on a <Math math="3 \times 3" /> grid
+            </li>
+            <li>
+              <Math math="(N+1)^2" /> points on a <Math math="N \times N" /> grid
+            </li>
+          </ul>
+          <p>We will call this set of points <Math math="\mathcal<P>" /></p>
+        </div>
+
+        <div class="math-block">
+          <h3>Defining a Path</h3>
+          From <Math math="\mathcal<P>" />, we select
+          <ul>
+            <li>A starting point <Math math="A" /></li>
+            <li>
+              An ending point <Math math="B" /> from the remaining <Math
+                math="|\mathcal<P>| - 1"
+              /> points
+            </li>
+          </ul>
+          This gives us the following number of possible paths:
+          <ul>
+            <li>
+              <Math math="|\mathcal<P>| \cdot (|\mathcal<P>| - 1)" /> if <Math
+                math="AB"
+              /> is different from <Math math="BA" />
+            </li>
+            <li>
+              <Math math="\frac<|\mathcal<P>| \cdot (|\mathcal<P>| - 1)><2>" /> if
+              <Math math="AB" /> is the same as <Math math="BA" />
+            </li>
+          </ul>
+          <p>
+            We will call this set of paths (line segments) <Math
+              math="\mathcal<L>"
+            />
+          </p>
+        </div>
+
+        <div class="math-block">
+          <h3>Path Pairs</h3>
+          <p>For two people to cross paths, we need</p>
+          <ul>
+            <li>
+              Your path <Math math="L_u" /> selected from <Math
+                math="\mathcal<L>"
+              />
+            </li>
+            <li>
+              Someone unexpected's path <Math math="L_<su>" /> selected from the
+              remaining <Math math="|\mathcal<L>| - 1" /> paths
+            </li>
+          </ul>
+          <p>
+            This gives us <Math
+              math="\frac<|\mathcal<L>| \cdot (|\mathcal<L>| - 1)><2>"
+            /> possible path pairs. We call this set of path pairs <Math
+              math="\mathcal<LP>"
+            />
+          </p>
+        </div>
+
+        <div class="math-block">
+          <h3>Intersection Probability</h3>
+          For every pair in <Math math="\mathcal<LP>" />, we check if <Math
+            math="L_u"
+          /> intersects with <Math math="L_<su>" /> and count it up
+          <p class="probability-equation">
+            <Math
+              math="\frac<\text<\# of intersections>><\text<\# of line pairs>>"
+            /> = <Math math="P(\text<intersection>)" />
+          </p>
+        </div>
+      </div>
 
       <div class="table-wrapper">
         <table class="grid-table">
@@ -79,35 +172,71 @@
       </div>
 
       <p class="section-text">
-        The probability of intersection goes down as the world gets bigger. The
-        runtime goes way up as well. How many paths do you have?
+        The number of possible line pairs is growing quite fast. The time it
+        takes to check all the line pairs for intersection is also growing quite
+        large. The probability is going down. Will <Math math="L_u" /> and <Math
+          math="L_<su>"
+        /> not cross paths? 😢
       </p>
-
-      <ul class="section-text">
-        <li>We need a start and end point</li>
-        <li>
-          There is 9 points on a 2 by 2 grid, 16 points on a 3 by 3 grid -> N by
-          N grid has (N+1)² points, P
-        </li>
-        <li>1 of these points from 9 will be our starting point</li>
-        <li>1 of the 8 (9 - 1) points will be our ending point</li>
-        <li>9 * 8 = 72 paths -> P * (P - 1) paths, PATHS</li>
-        <li>
-          You and someone unexpected have a unique path. So you get 1 of the 72
-          and SU gets 1 of 71 remaining paths.
-        </li>
-        <li>
-          72 * 71 = 5112 path pairs -> PATHS * (PATHS - 1) path pairs, PAIRS
-        </li>
-        <li>For every pair, we check if U and SU crossed paths</li>
-      </ul>
 
       <div class="interactive-element">
         <PathIntersections />
       </div>
 
+      <p class="section-text">
+        In the visualization above, we can see how the space of intersections
+        looks. The bottom grid represents <Math math="\mathcal<LP>" />. The axes
+        of the grid represents <Math math="\mathcal<L>" /> (all the lines). So the
+        cell at <Math math="(1, 3)" /> represents picking the first line from <Math
+          math="\mathcal<L>"
+        />, which is
+        <Math math="L_1" /> and picking the third line from <Math
+          math="\mathcal<L>"
+        />, which is
+        <Math math="L_3" />. So the grid represents picking every possible pair
+        of lines and this is exactly what
+        <Math math="\mathcal<LP>" /> is. If the cell is white, then an intersection
+        occurred. We won't count pairs where <Math math="L_u" /> and <Math
+          math="L_<su>"
+        /> are the same line - this is why the diagonal is all black.
+      </p>
+
       <!-- What is a crossing? -->
       <h2 class="section-title">What is a crossing?</h2>
+
+      <p class="section-text">
+        Your line has 2 points <Math math="A" /> and <Math math="B" />. Take a
+        look at the first diagram. <Math math="\overline<AB>" /> has a slope, <Math
+          math="S_<ab>"
+        />. The point C is
+        <b>counterclockwise</b>
+        to <Math math="\overline<AB>" /> because <Math math="S_<bc>" />
+        is greater than <Math math="S_<ab>" />. The point D is <b>collinear</b>
+        to <Math math="\overline<AB>" /> because <Math math="S_<bd>" />
+        equals <Math math="S_<ab>" />. The point E is <b>clockwise</b> to <Math
+          math="\overline<AB>"
+        /> because <Math math="S_<be>" /> is less than <Math math="S_<ab>" />.
+        Think of it as riding a bike along the line <Math
+          math="\overline<AB>"
+        /> and then turning towards the target point, C, D, or E. The way you turn
+        decides your orientation. We can use this to figure out if two lines intersect.
+        <br />
+        <br />
+        Take a look at the second diagram. When the gray line is not intersecting,
+        its orientation to point A is clockwise. Its orientation to point B is also
+        clockwise. Imagine the gray line is sliding down to the left. When it crosses
+        B, the orientation to B will become counterclockwise! This means <Math
+          math="A"
+        /> and <Math math="B" />
+        have to be on different sides of the gray line. Also, the gray points have
+        to be on different sides of <Math math="\overline<AB>" />.
+
+        <br />
+        <br />
+        Take a look at the third diagram. If the point is collinear with <Math
+          math="\overline<AB>"
+        />, then we just need to check if the point is on the line segment.
+      </p>
 
       <div class="interactive-element">
         <DiagramGallery />
@@ -116,10 +245,12 @@
       <!-- Approximate -->
       <h2 class="section-title">Approximate</h2>
       <p class="section-text">
-        That's a lot of path pairs to check and it would take way too much time
-        to check them all. Let's cross paths with Stainslaw Ulam, the inventor
-        of the Monte Carlo method. Monte Carlo is a way to determine "something"
-        by repeated sampling. Think of the game Red Light, Green Light.
+        There is a lot of path pairs to check for intersection and it would take
+        way too much time to check them all as the grid gets very large. Let's
+        cross paths with Stainslaw Ulam, the inventor of the Monte Carlo method.
+        Monte Carlo is a way to determine "something" by repeated sampling. 
+        In our case, "something" is the probability of intersection.
+        Think of the game Red Light, Green Light from Squid Games or childhood.
       </p>
 
       <p class="section-text">
@@ -140,43 +271,168 @@
       </div>
 
       <p class="section-text">
-        Monte Carlo matches up with the exact probability calculation. As grid
-        size increases, the space (number of path pairs) increases. To get a
+        We pick 2 paths at random and see if they intersect. Monte Carlo gets
+        close to the exact probability as we get more samples. As the grid size
+        increases, the space (number of path pairs) increases. To get a
         reasonable "vibe" of the space, we should take a good amount of samples.
         Otherwise, our approximation could be wrong.
+        <br />
+        <br />
+        As the grid gets big, it looks like the approximate probability is approaching
+        some value. What could it be 🤔
       </p>
 
       <!-- Polygons -->
       <h2 class="section-title">Polygons</h2>
       <p class="section-text">
-        Let's flip the situation. When is it impossible not to cross paths?
+        Checking every possible path pair becomes impractical. At grid size 20,
+        we will have 30 billions pairs to check! Monte Carlo only gives us
+        approximations. Let's flip our prespective. When is it impossible for
+        paths not to cross?
       </p>
 
       <p class="section-text">
-        Polygon method. Your path if extended to the boundary of the world would
-        split it into 2 parts. The upper polygon and lower polygon. SU will have
-        a start point in "some" part of the upper polygon. This means the paths
-        are guaranteed to cross.
+        What happens when we extend your path <Math math="L_U" /> to the boundaries
+        of our grid world? This line naturally divides the space into two regions
+        - the upper polygon (blue) and the lower polygon (orange). If someone unexpected
+        <Math math="L_<SU>" /> starts their path from a point <Math
+          math="P_a"
+        /> in the upper polygon, we can calculate a complementary region of points
+        <Math math="C" /> in the lower polygon. Play with the visualization below,
+        you can see this as the yellow colored points. Creating a path from <Math
+          math="P_a"
+        /> to any point in <Math math="C" /> will guarantee an intersection! This
+        will work no matter which polygon we pick a point from.
+      </p>
+
+      <div class="section-text math-blocks">
+        <div class="math-block">
+          <h3>Polygon Method Steps</h3>
+          <p>
+            Instead of checking every possible path pair for intersection, we
+            can:
+          </p>
+          <ul>
+            <li>Take any possible path <Math math="L_U" /></li>
+            <li>
+              Extend the path to the grid boundaries and identify the two
+              polygons
+            </li>
+            <li>
+              Go through every point <Math math="P_i" /> in one of the polygons
+            </li>
+            <li>
+              Count how many points are in the complementary region of points <Math
+                math="C"
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="section-text">
+        This method transforms our problem from finding actual intersections to
+        finding guaranteed ones, making our calculations much more manageable
+        for larger grids.
       </p>
 
       <div class="interactive-element">
         <PolygonMethod />
       </div>
 
-      <!-- It's a small world -->
       <h2 class="section-title">It's a small world</h2>
+
       <p class="section-text">
-        Now we can count all the ways in which your paths are crossed. How does
-        this number grow as the world gets bigger and bigger? Can it keep up?
-        The complementary area, which is a set of points, in the upper polygon
-        is proportional to x² The lower polygon has an area, which is a set of
-        points, that is proportional to x² Crossing these two areas would be
-        proportional to x⁴ (x² * x²) In order to describe your path, we need x1,
-        y1, x2, y2 Each of these variables can range from 0 to N The number of
-        line segments is proportional to x⁴ The number of intersections grows
-        proportional to x⁸ (x⁴ * x⁴) The growth of the path pairs grows
-        proportional to x⁸ as well When the grid size grows to infinity, we get
-        a non-zero probability of intersection! It really is a small world.
+        Now we can count all the ways in which paths are guaranteed to cross.
+        But what happens to this number as our world grows larger and larger?
+        Can the number of non-intersecting paths keep up with the growth of
+        intersecting ones?
+      </p>
+
+      <div class="math-block section-text">
+        <h3>Growth of Possible Paths</h3>
+        <p>First, let's understand how many possible paths exist:</p>
+        <ul>
+          <li>
+            Each path needs four coordinates: <Math
+              math="(x_1, y_1, x_2, y_2)"
+            />
+          </li>
+          <li>
+            Each coordinate can range from <Math math="0" /> to <Math
+              math="N"
+            />
+          </li>
+          <li>
+            Therefore, the number of possible line segments grows proportional
+            to <Math math="N^4" />
+          </li>
+        </ul>
+      </div>
+
+      <div class="math-block section-text">
+        <h3>Counting Intersections</h3>
+        <p>Using the polygon method, we can count intersections:</p>
+        <ul>
+          <li>
+            For a given path <Math math="L_U" />, we pick one of the polygons <Math math="H" /> which has 
+            number of points proportional to <Math math="N^2" />
+          </li>
+          <li>
+            For each point in <Math math="H" />, we have the number of valid intersection
+            points in the complementary region <Math math="C" /> which is proportional to <Math math="N^2" />
+          </li>
+          <li>
+            The number of intersecting lines is proportional to (# of points in <Math math="H" />) × (# of points in <Math math="C" />) <Math math="\propto<N^4>" /> 
+          </li>
+          <li>
+            This gives us <Math math="N^4" /> (choosing the first line) × <Math
+              math="N^4"
+            /> (intersecting lines)
+          </li>
+          <li>
+            The total growth of intersections is proportional to <Math
+              math="N^8"
+            />
+          </li>
+        </ul>
+      </div>
+
+      <div class="math-block section-text">
+        <h3>Why the World Stays Small</h3>
+        <ul>
+          <li>
+            Total possible path pairs grow proportional to <Math math="N^8" />
+          </li>
+          <li>
+            Number of intersecting paths also grows proportional to <Math
+              math="N^8"
+            />
+          </li>
+          <li>
+            Their ratio (the probability of intersection) approaches a non-zero
+            constant
+          </li>
+          <li>
+            Even as <Math math="N \rightarrow \infty" />, there's still a
+            significant chance of paths crossing!
+          </li>
+        </ul>
+      </div>
+
+      <p class="section-text">
+        We can also think about when paths definitely won't cross. 
+        We could calculate an average area of the lower and upper polygon.
+        Picking two points from the same polygon would give us a non-intersecting line.
+        The area of each region varies based on <Math math="L_U" />, but averaging across all
+        possible line segments gives us a lower bound on the probability of
+        non-intersection. 
+      </p>
+
+      <p class="section-text">
+        Even in an infinitely
+        large world, the chance of crossing paths never disappears. It really is
+        a small world after all.
       </p>
 
       <!-- Further exploration -->
@@ -317,7 +573,7 @@
 
   .grid-table td.monospace {
     font-family: "IBM Plex Mono", monospace;
-    color: #b3b3b3;
+    color: #e0e0e0;
   }
 
   .table-caption {
@@ -325,6 +581,45 @@
     color: #b3b3b3;
     font-style: italic;
     text-align: center;
+  }
+
+  .math-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .math-block {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .math-block h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+  }
+
+  .math-block p {
+    margin: 1rem 0;
+  }
+
+  .math-block ul {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .math-block li {
+    margin: 0.5rem 0;
+  }
+
+  .probability-equation {
+    text-align: center;
+    padding: 1rem 0;
   }
 
   @media (max-width: 768px) {

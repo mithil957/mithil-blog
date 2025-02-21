@@ -1,7 +1,7 @@
 <script lang="ts">
     const diagram = {
       src: '/monte_carlo_diagram.png',
-      caption: 'Monte Carlo sampling: Recording positions (green X marks) at different times to approximate the actual paths (black curves). Like the robot doll taking snapshots in Red Light, Green Light, more samples give us a better approximation of the true paths.'
+      caption: 'The approximate path gets closer to the actual path with more samples'
     };
   </script>
   
@@ -34,8 +34,8 @@
     .diagram-caption {
       margin-top: 0.75rem;
       text-align: center;
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 1.0rem;
+      color: #b3b3b3;
       max-width: 90%;
       line-height: 1.4;
     }

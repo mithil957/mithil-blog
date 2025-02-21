@@ -2,15 +2,15 @@
     const diagrams = [
       {
         src: '/orientation_diagram.png',
-        caption: 'Orientation of three points: Clockwise, Counterclockwise, or Collinear'
+        caption: '3 Orientations: Clockwise, Counterclockwise, or Collinear'
       },
       {
         src: '/intersection_diagram.png',
-        caption: 'Two line segments intersecting at a point'
+        caption: 'Notice the orientation changes when the gray segment actually intersects'
       },
       {
         src: '/collinear_diagram.png',
-        caption: 'Special case: Points are collinear'
+        caption: 'Collinear'
       }
     ];
   </script>
@@ -57,8 +57,8 @@
     .diagram-caption {
       margin-top: 0.75rem;
       text-align: center;
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 1.0rem;
+      color: #b3b3b3;
       max-width: 90%;
       line-height: 1.4;
     }
