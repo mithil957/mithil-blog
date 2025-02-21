@@ -139,7 +139,7 @@ export const createGridPathsSketch = () => {
         };
 
         const increaseGridSize = () => {
-            if (gridSize < 5) {
+            if (gridSize < 40) {
                 gridSize++;
                 setLatticePoints();
                 generatePaths();

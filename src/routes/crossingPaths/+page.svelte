@@ -47,7 +47,7 @@
       </div>
 
       <p class="section-text">
-        Let's start with understanding the space of possibilities.
+        Let's start by understanding the space of possibilities.
       </p>
 
       <div class="section-text math-blocks">
@@ -68,7 +68,7 @@
               <Math math="(N+1)^2" /> points on a <Math math="N \times N" /> grid
             </li>
           </ul>
-          <p>We will call this set of points <Math math="\mathcal<P>" /></p>
+          <p>We will call this <Math math="\mathcal<P>" />, the set of points </p>
         </div>
 
         <div class="math-block">
@@ -95,9 +95,9 @@
             </li>
           </ul>
           <p>
-            We will call this set of paths (line segments) <Math
-              math="\mathcal<L>"
-            />
+            We will call this  <Math
+            math="\mathcal<L>"
+          />, the set of paths (line segments)
           </p>
         </div>
 
@@ -118,10 +118,33 @@
           <p>
             This gives us <Math
               math="\frac<|\mathcal<L>| \cdot (|\mathcal<L>| - 1)><2>"
-            /> possible path pairs. We call this set of path pairs <Math
-              math="\mathcal<LP>"
-            />
+            /> possible path pairs. We call this <Math
+            math="\mathcal<LP>" />, the set of path pairs 
           </p>
+        </div>
+
+        <div class="math-block">
+          <h3>Size of Space</h3>
+          <p>Let's see how quickly our space grows with grid size <Math math="N" /></p>
+          <ul>
+            <li>Points <Math math="\mathcal<P>" />
+              <ul>
+                <li>Grows proportional to <Math math="N^2" /></li>
+              </ul>
+            </li>
+            <li>Paths <Math math="\mathcal<L>" />
+              <ul>
+                <li>To make a path, we pick <Math math="2" /> points from <Math math="\mathcal<P>" /></li>
+                <li>Grows proportional to <Math math="N^4" /> (<Math math="N^2 \cdot N^2" />)</li>
+              </ul>
+            </li>
+            <li>Path pairs <Math math="\mathcal<LP>" />
+              <ul>
+                <li>To make a pair, we pick <Math math="2" /> lines from <Math math="\mathcal<L>" /></li>
+                <li>Grows proportional to <Math math="N^8" /> (<Math math="N^4 \cdot N^4" />)</li>
+              </ul>
+            </li>
+          </ul>
         </div>
 
         <div class="math-block">
@@ -258,7 +281,7 @@
         When the large robot doll turns around, instead of making you less
         alive, she records your position. If she turns around twice, she has
         your location at 2 points in time. If we connect these 2 points, that
-        might be a bad approximation of how your running path. The more she
+        might be a bad approximation of your running path. The more she
         turns around and records your location, the more accurately she can see
         your path.
       </p>
@@ -287,8 +310,8 @@
       <h2 class="section-title">Polygons</h2>
       <p class="section-text">
         Checking every possible path pair becomes impractical. At grid size 20,
-        we will have 30 billions pairs to check! Monte Carlo only gives us
-        approximations. Let's flip our prespective. When is it impossible for
+        we will have 30 billion pairs to check! Monte Carlo only gives us
+        approximations. Let's flip our perspective. When is it impossible for
         paths not to cross?
       </p>
 
@@ -449,7 +472,7 @@
           sphere or cube?
         </li>
         <li>
-          Is the probability of one space equal to another space? For example, a
+          Is the probability in one space equal to probability in another space? For example, a
           rectangle and the surface of a cylinder
         </li>
         <li>What if your path is not a straight line?</li>
