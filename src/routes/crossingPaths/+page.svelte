@@ -432,7 +432,7 @@
       <p class="section-text">
         Even in an infinitely
         large world, the chance of crossing paths never disappears. It really is
-        a small world after all.
+        a small world after all ☺️
       </p>
 
       <!-- Further exploration -->
@@ -440,11 +440,11 @@
       <ul class="section-text">
         <li>
           Probability of intersection if we pick points on the surface of a
-          sphere or cube
+          sphere or cube?
         </li>
         <li>
           Is the probability of one space equal to another space? For example,
-          rectangle and the surface of a cylinder
+          a rectangle and the surface of a cylinder
         </li>
         <li>What if your path is not a straight line?</li>
       </ul>
