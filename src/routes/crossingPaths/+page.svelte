@@ -29,16 +29,17 @@
       <!-- Simple Crossing -->
       <h2 class="section-title">Simple world</h2>
       <p class="section-text">
-        We will have a simple model. The world will be a
-        square of size <Math math="N \times N" />. We have two people <Math
-          math="\mathcal<U>"
-        /> (you) and <Math math="\mathcal<SU>" /> (someone unexpected). Each starting
-        somewhere and following a path until it ends. The start and end points will
-        be lattice points (integer coordinates). For example, <Math
-          math="(2,4)"
-        /> is a lattice point but <Math math="(6.8, 4)" /> is not. What will happen
-        to the probability of intersection as <Math math="N" /> (the world) gets
-        bigger?
+        We will have a simple model. The world will be a square of size <Math
+          math="N \times N"
+        />. We have two people <Math math="\mathcal<U>" /> (you) and <Math
+          math="\mathcal<SU>"
+        /> (someone unexpected). Each starting somewhere and following a path until
+        it ends. The start and end points will be lattice points (integer coordinates).
+        For example, <Math math="(2,4)" /> is a lattice point but <Math
+          math="(6.8, 4)"
+        /> is not. What will happen to the probability of intersection as <Math
+          math="N"
+        /> (the world) gets bigger?
       </p>
 
       <div class="interactive-element">
@@ -248,9 +249,9 @@
         There is a lot of path pairs to check for intersection and it would take
         way too much time to check them all as the grid gets very large. Let's
         cross paths with Stanisław Ulam, the inventor of the Monte Carlo method.
-        Monte Carlo is a way to determine "something" by repeated sampling. 
-        In our case, "something" is the probability of intersection.
-        Think of the game Red Light, Green Light from Squid Games or childhood.
+        Monte Carlo is a way to determine "something" by repeated sampling. In
+        our case, "something" is the probability of intersection. Think of the
+        game Red Light, Green Light from Squid Games or childhood.
       </p>
 
       <p class="section-text">
@@ -375,15 +376,21 @@
         <p>Using the polygon method, we can count intersections:</p>
         <ul>
           <li>
-            For a given path <Math math="L_U" />, we pick one of the polygons <Math math="H" /> which has 
-            number of points proportional to <Math math="N^2" />
+            For a given path <Math math="L_U" />, we pick one of the polygons <Math
+              math="H"
+            /> which has number of points proportional to <Math math="N^2" />
           </li>
           <li>
-            For each point in <Math math="H" />, we have the number of valid intersection
-            points in the complementary region <Math math="C" /> which is proportional to <Math math="N^2" />
+            For each point in <Math math="H" />, we have the number of valid
+            intersection points in the complementary region <Math math="C" /> which
+            is proportional to <Math math="N^2" />
           </li>
           <li>
-            The number of intersecting lines is proportional to (# of points in <Math math="H" />) × (# of points in <Math math="C" />) <Math math="\propto<N^4>" /> 
+            The number of intersecting lines is proportional to (# of points in <Math
+              math="H"
+            />) × (# of points in <Math math="C" />) <Math
+              math="\propto<N^4>"
+            />
           </li>
           <li>
             This gives us <Math math="N^4" /> (choosing the first line) × <Math
@@ -421,18 +428,17 @@
       </div>
 
       <p class="section-text">
-        We can also think about when paths definitely won't cross. 
-        We could calculate an average area of the lower and upper polygon.
-        Picking two points from the same polygon would give us a non-intersecting line.
-        The area of each region varies based on <Math math="L_U" />, but averaging across all
-        possible line segments gives us a lower bound on the probability of
-        non-intersection. 
+        We can also think about when paths definitely won't cross. We could
+        calculate an average area of the lower and upper polygon. Picking two
+        points from the same polygon would give us a non-intersecting line. The
+        area of each region varies based on <Math math="L_U" />, but averaging
+        across all possible line segments gives us a lower bound on the
+        probability of non-intersection.
       </p>
 
       <p class="section-text">
-        Even in an infinitely
-        large world, the chance of crossing paths never disappears. It really is
-        a small world after all ☺️
+        Even in an infinitely large world, the chance of crossing paths never
+        disappears. It really is a small world after all ☺️
       </p>
 
       <!-- Further exploration -->
@@ -443,11 +449,19 @@
           sphere or cube?
         </li>
         <li>
-          Is the probability of one space equal to another space? For example,
-          a rectangle and the surface of a cylinder
+          Is the probability of one space equal to another space? For example, a
+          rectangle and the surface of a cylinder
         </li>
         <li>What if your path is not a straight line?</li>
       </ul>
+
+      <div class="footer-divider"></div>
+      <!-- Footer -->
+      <h2 class="section-title">Note</h2>
+      <p class="section-text">
+        This problem might have an exact answer, feel free to look it up. I
+        couldn't resist trying to work out such a simply stated problem.
+      </p>
     </article>
   </div>
 </div>
@@ -462,6 +476,13 @@
 
   .blog-header {
     margin-bottom: 0rem;
+  }
+
+  .footer-divider {
+    height: 2px;
+    background-color: #ff7f50;
+    margin: 3rem 0;
+    width: 100%;
   }
 
   .blog-title {
