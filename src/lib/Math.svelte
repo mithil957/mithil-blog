@@ -17,7 +17,6 @@
     $: mathText = replaceAngleBrackets(math);
     
     $: if (element && math) {
-        console.log(mathText);
         katex.render(mathText, element, {
             displayMode: display,
             throwOnError: false

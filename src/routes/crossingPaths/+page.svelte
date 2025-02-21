@@ -247,7 +247,7 @@
       <p class="section-text">
         There is a lot of path pairs to check for intersection and it would take
         way too much time to check them all as the grid gets very large. Let's
-        cross paths with Stainslaw Ulam, the inventor of the Monte Carlo method.
+        cross paths with Stanisław Ulam, the inventor of the Monte Carlo method.
         Monte Carlo is a way to determine "something" by repeated sampling. 
         In our case, "something" is the probability of intersection.
         Think of the game Red Light, Green Light from Squid Games or childhood.
