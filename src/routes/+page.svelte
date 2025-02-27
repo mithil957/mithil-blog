@@ -16,7 +16,7 @@
         <article class="post-item">
           <a href="/crossingPaths" class="post-link">
             <h3 class="post-name">Crossing paths, will it happen?</h3>
-            <time class="post-date">Feb 20, 2025 | 12:00 PM</time>
+            <time class="post-date">Feb 27, 2025 | 8:00 AM</time>
           </a>
         </article>
       </div>

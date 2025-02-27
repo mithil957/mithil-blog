@@ -6,6 +6,10 @@
   import MonteCarloSimulation from "$lib/crossingPaths/components/MonteCarloSimulation/MonteCarloSimulation.svelte";
   import PolygonMethod from "$lib/crossingPaths/components/PolygonMethod/PolygonMethod.svelte";
   import Math from "$lib/Math.svelte";
+
+  const links = {
+    sourceCode: "https://github.com/mithil957/mithil-blog/tree/main/src/lib/crossingPaths",
+  };
 </script>
 
 <div class="blog-post">
@@ -485,6 +489,9 @@
         This problem might have an exact answer, feel free to look it up. I
         couldn't resist trying to work out such a simply stated problem.
       </p>
+      <p class="section-text">
+        <a href={links.sourceCode} target="_blank" rel="noopener noreferrer" class="source-link">View Source Code</a>
+      </p>      
     </article>
   </div>
 </div>
@@ -664,6 +671,18 @@
   .probability-equation {
     text-align: center;
     padding: 1rem 0;
+  }
+
+  .source-link {
+    color: #ff7f50;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .source-link:hover {
+    color: #ff9e7a;
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
